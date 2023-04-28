@@ -1,7 +1,5 @@
 #include <Xcursor/Xcursor.h>
-#include <Xlibint.h>
 #include <jni.h>
-#include <stdio.h>
 
 const char *LOOKUP[] = {
 	"default",

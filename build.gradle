@@ -1,4 +1,5 @@
 import org.gradle.internal.jvm.Jvm
+import org.gradle.internal.os.OperatingSystem
 
 plugins {
 	id 'java-library'
@@ -41,4 +42,5 @@ dependencies {
 	implementation 'org.lwjgl.lwjgl:lwjgl:2.9.1'
 }
 
-classes.dependsOn 'lwjglLegacyCursorsX11SharedLibrary'
+if (OperatingSystem.current() == OperatingSystem.LINUX)
+	classes.dependsOn 'lwjglLegacyCursorsX11SharedLibrary'
