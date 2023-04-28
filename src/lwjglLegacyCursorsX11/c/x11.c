@@ -19,5 +19,5 @@ JNIEXPORT jlong JNICALL Java_io_toadlabs_lwjgllegacycursors_LinuxSystemCursors_n
 	if (cursor < 0 || cursor >= sizeof(LOOKUP) / sizeof(*LOOKUP))
 		cursor = 0;
 
-	return XcursorLibraryLoadCursor((Display*) (intptr_t) displayPtr, LOOKUP[cursor]);
+	return XcursorLibraryLoadCursor((Display *) displayPtr, LOOKUP[cursor]);
 }
