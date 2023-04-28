@@ -1,0 +1,11 @@
+bin/
+build/
+.settings/
+.classpath
+.project
+.gradle/
+.idea/
+# :catstare:
+*.log
+# for testing!
+natives/

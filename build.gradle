@@ -1,0 +1,44 @@
+import org.gradle.internal.jvm.Jvm
+
+plugins {
+	id 'java-library'
+	id 'c'
+}
+
+repositories {
+	mavenCentral()
+}
+
+def jvmHome = Jvm.current().javaHome
+
+java {
+	sourceCompatibility 8
+	targetCompatibility 8
+}
+
+model {
+	platforms {
+		x64 {
+			architecture 'x86_64'
+		}
+	}
+	
+	components {
+		lwjglLegacyCursorsX11(NativeLibrarySpec) {
+			targetPlatform "x64"
+			binaries.all {
+				cCompiler.args '-I', "${jvmHome}/include"
+				cCompiler.args '-I', "${jvmHome}/include/linux"
+				cCompiler.args '-I', "/usr/include/X11"
+				cCompiler.args '-D_FILE_OFFSET_BITS=64'
+				linker.args '-lXcursor'
+			}
+		}
+	}
+}
+
+dependencies {
+	implementation 'org.lwjgl.lwjgl:lwjgl:2.9.1'
+}
+
+classes.dependsOn 'lwjglLegacyCursorsX11SharedLibrary'
