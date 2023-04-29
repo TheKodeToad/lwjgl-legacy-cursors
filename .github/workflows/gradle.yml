@@ -32,6 +32,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.11
     - name: Set up JDK 8
       uses: actions/setup-java@v3
       with:
@@ -40,4 +41,4 @@ jobs:
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: compileLwjglLegacyCursorsWin32SharedLibrary
+        arguments: compileLwjglLegacyCursorsWin32SharedLibrary -PwindowsSDKInclude=C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0
