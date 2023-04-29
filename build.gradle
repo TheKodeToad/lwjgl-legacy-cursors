@@ -35,12 +35,16 @@ model {
 				linker.args '-lXcursor'
 			}
 		}
+		lwjglLegacyCursorsWin32(NativeLibrarySpec) {
+			targetPlatform "x64"
+			binaries.all {
+				cCompiler.args '-I', "${jvmHome}/include"
+				cCompiler.args '-I', "${jvmHome}/include/linux"
+			}
+		}
 	}
 }
 
 dependencies {
 	implementation 'org.lwjgl.lwjgl:lwjgl:2.9.1'
 }
-
-if (OperatingSystem.current() == OperatingSystem.LINUX)
-	classes.dependsOn 'lwjglLegacyCursorsX11SharedLibrary'

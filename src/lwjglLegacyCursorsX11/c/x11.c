@@ -14,7 +14,7 @@ const char *LOOKUP[] = {
 	"not-allowed"
 };
 
-JNIEXPORT jlong JNICALL Java_io_toadlabs_lwjgllegacycursors_LinuxSystemCursors_nGetDefaultCursorHandle(
+JNIEXPORT jlong JNICALL Java_io_toadlabs_lwjgllegacycursors_X11SystemCursors_nGetDefaultCursorHandle(
 		JNIEnv *env, jclass unused, jlong displayPtr, jbyte cursor) {
 	if (cursor < 0 || cursor >= sizeof(LOOKUP) / sizeof(*LOOKUP))
 		cursor = 0;

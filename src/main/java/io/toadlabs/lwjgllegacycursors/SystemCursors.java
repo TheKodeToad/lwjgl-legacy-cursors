@@ -28,7 +28,9 @@ public final class SystemCursors {
 			throw new IllegalArgumentException(Byte.toString(cursor));
 
 		if (LWJGLUtil.getPlatform() == LWJGLUtil.PLATFORM_LINUX)
-			LinuxSystemCursors.setCursor(cursor);
+			X11SystemCursors.setCursor(cursor);
+		else if (LWJGLUtil.getPlatform() == LWJGLUtil.PLATFORM_WINDOWS)
+			Win32SystemCursors.setCursor(cursor);
 	}
 
 	private static byte size() {
