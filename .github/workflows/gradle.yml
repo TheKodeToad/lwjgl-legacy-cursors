@@ -10,15 +10,11 @@ permissions:
   contents: read
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+  linux:
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Install dependencies (Linux)
-      if: runner.os == 'Linux'
+    - name: Install dependencies
       run: sudo apt install libxcursor-dev
     - uses: actions/checkout@v3
     - name: Set up JDK 8
@@ -29,4 +25,19 @@ jobs:
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: build
+        arguments: compileLwjglLegacyCursorsX11SharedLibrary
+
+  windows:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 8
+      uses: actions/setup-java@v3
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+    - name: Build with Gradle
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: compileLwjglLegacyCursorsWin32SharedLibrary
