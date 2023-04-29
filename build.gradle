@@ -43,6 +43,7 @@ model {
 				binaries.all {
 					cCompiler.args '-I', "${jvmHome}/include"
 					cCompiler.args '-I', "${jvmHome}/include/linux"
+					cCompiler.args '-I', windowsSDKInclude
 				}
 			}
 		}
