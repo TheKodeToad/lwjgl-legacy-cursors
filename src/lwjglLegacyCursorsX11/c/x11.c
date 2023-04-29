@@ -15,9 +15,9 @@ const char *LOOKUP[] = {
 };
 
 JNIEXPORT jlong JNICALL Java_io_toadlabs_lwjgllegacycursors_X11SystemCursors_nGetDefaultCursorHandle(
-		JNIEnv *env, jclass unused, jlong displayPtr, jbyte cursor) {
+		JNIEnv *env, jclass unused, jlong display, jbyte cursor) {
 	if (cursor < 0 || cursor >= sizeof(LOOKUP) / sizeof(*LOOKUP))
 		cursor = 0;
 
-	return XcursorLibraryLoadCursor((Display *) displayPtr, LOOKUP[cursor]);
+	return XcursorLibraryLoadCursor((Display *) display, LOOKUP[cursor]);
 }

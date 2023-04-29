@@ -25,21 +25,25 @@ model {
 	}
 	
 	components {
-		lwjglLegacyCursorsX11(NativeLibrarySpec) {
-			targetPlatform "x64"
-			binaries.all {
-				cCompiler.args '-I', "${jvmHome}/include"
-				cCompiler.args '-I', "${jvmHome}/include/linux"
-				cCompiler.args '-I', "/usr/include/X11"
-				cCompiler.args '-D_FILE_OFFSET_BITS=64'
-				linker.args '-lXcursor'
+		if (OperatingSystem.current() == OperatingSystem.LINUX) {
+			lwjglLegacyCursorsX11(NativeLibrarySpec) {
+				targetPlatform "x64"
+				binaries.all {
+					cCompiler.args '-I', "${jvmHome}/include"
+					cCompiler.args '-I', "${jvmHome}/include/linux"
+					cCompiler.args '-I', "/usr/include/X11"
+					cCompiler.args '-D_FILE_OFFSET_BITS=64'
+					linker.args '-lXcursor'
+				}
 			}
 		}
-		lwjglLegacyCursorsWin32(NativeLibrarySpec) {
-			targetPlatform "x64"
-			binaries.all {
-				cCompiler.args '-I', "${jvmHome}/include"
-				cCompiler.args '-I', "${jvmHome}/include/linux"
+		if (OperatingSystem.current() == OperatingSystem.WINDOWS) {
+			lwjglLegacyCursorsWin32(NativeLibrarySpec) {
+				targetPlatform "x64"
+				binaries.all {
+					cCompiler.args '-I', "${jvmHome}/include"
+					cCompiler.args '-I', "${jvmHome}/include/linux"
+				}
 			}
 		}
 	}
