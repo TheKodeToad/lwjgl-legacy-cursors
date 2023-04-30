@@ -43,10 +43,6 @@ model {
 				binaries.all {
 					cCompiler.args '-I', "${jvmHome}/include"
 					cCompiler.args '-I', "${jvmHome}/include/win32"
-					
-					//String kit = "C:/Program Files (x86)/Windows Kits/10/Include/${windowsKitVersion}"
-					//cCompiler.args '-I', "${kit}/um"
-					//cCompiler.args '-I', "${kit}/shared"
 				}
 			}
 		}

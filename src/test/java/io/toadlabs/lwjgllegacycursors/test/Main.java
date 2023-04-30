@@ -8,12 +8,12 @@ import io.toadlabs.lwjgllegacycursors.SystemCursors;
 
 public class Main {
 
-	public static void main(String[] args) throws LWJGLException {
-		Display.setResizable(true);
+	public static void main(String[] args) throws LWJGLException, InterruptedException {
 		Display.setDisplayMode(new DisplayMode(800, 600));
 		Display.create();
+
+		SystemCursors.setCursor(SystemCursors.NOT_ALLOWED);
 		while (!Display.isCloseRequested()) {
-			SystemCursors.setCursor((byte) (9));
 			Display.sync(60);
 			Display.update();
 		}

@@ -45,7 +45,7 @@ final class Win32SystemCursors {
 
 	private static long getHwnd() {
 		try {
-			return (long) getHwndMethod.invokeExact(Util.getDisplayImplementation());
+			return (long) getHwndMethod.invoke(Util.getDisplayImplementation());
 		} catch (Throwable error) {
 			throw Util.sneakyThrow(error);
 		}

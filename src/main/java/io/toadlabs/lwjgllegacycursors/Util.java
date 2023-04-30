@@ -54,7 +54,7 @@ final class Util {
 
 	public static Object getDisplayImplementation() {
 		try {
-			return getDisplayImplementationMethod.invokeExact();
+			return getDisplayImplementationMethod.invoke();
 		} catch (Throwable error) {
 			throw sneakyThrow(error);
 		}
