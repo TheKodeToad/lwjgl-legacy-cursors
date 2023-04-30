@@ -43,7 +43,7 @@ model {
 				binaries.all {
 					cCompiler.args '-I', "${jvmHome}/include"
 					cCompiler.args '-I', "${jvmHome}/include/linux"
-					cCompiler.args '-I', windowsSDKInclude
+					cCompiler.args '-I', "C:/Program Files (x86)/Windows Kits/10/Include/${windowsKitVersion}"
 				}
 			}
 		}

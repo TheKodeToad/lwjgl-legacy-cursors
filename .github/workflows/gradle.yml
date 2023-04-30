@@ -41,4 +41,4 @@ jobs:
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: compileLwjglLegacyCursorsWin32SharedLibrary -PwindowsSDKInclude="C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0"
+        arguments: compileLwjglLegacyCursorsWin32SharedLibrary -PwindowsKitVersion=10.0.18362.0
