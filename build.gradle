@@ -10,7 +10,7 @@ repositories {
 	mavenCentral()
 }
 
-def jvmHome = Jvm.current().javaHome
+String jvmHome = Jvm.current().javaHome
 
 java {
 	sourceCompatibility 8
@@ -42,8 +42,11 @@ model {
 				targetPlatform "x64"
 				binaries.all {
 					cCompiler.args '-I', "${jvmHome}/include"
-					cCompiler.args '-I', "${jvmHome}/include/linux"
-					cCompiler.args '-I', "C:/Program Files (x86)/Windows Kits/10/Include/${windowsKitVersion}"
+					cCompiler.args '-I', "${jvmHome}/include/win32"
+					
+					//String kit = "C:/Program Files (x86)/Windows Kits/10/Include/${windowsKitVersion}"
+					//cCompiler.args '-I', "${kit}/um"
+					//cCompiler.args '-I', "${kit}/shared"
 				}
 			}
 		}
